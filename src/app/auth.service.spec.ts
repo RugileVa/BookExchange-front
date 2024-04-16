@@ -1,12 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
+import { Auth } from '@angular/fire/auth';
 
 describe('AuthService', () => {
   let service: AuthService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [mockAuthProvider]
+    });
     service = TestBed.inject(AuthService);
   });
 
@@ -14,3 +17,13 @@ describe('AuthService', () => {
     expect(service).toBeTruthy();
   });
 });
+
+export const mockAuthProvider = {
+  provide: Auth,
+  useValue: jasmine.createSpyObj('Auth', {
+    setPersistence: Promise.resolve(),
+    authStateReady: Promise.resolve(),
+    onAuthStateChanged: Promise.resolve(),
+    getIdTokenResult: Promise.resolve()
+  })
+};
