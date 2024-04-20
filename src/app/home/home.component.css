@@ -38,10 +38,7 @@
   body {
     background-color: var(--white-color);
     font-family: var(--body-font-family); 
-  }
-  
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-  
+  }  
   
   .box{
     max-width: 400px;
@@ -484,7 +481,6 @@
   
   .navbar-toggler .navbar-toggler-icon {
     background: var(--white-color);
-    transition: background 10ms 300ms ease;
     display: block;
     width: 30px;
     height: 2px;
@@ -638,7 +634,6 @@
     width: 35px;
     height: 35px;
     line-height: 36px;
-    transition: background 0.2s, color 0.2s;
   }
   
   .social-icon-link:hover {
@@ -676,7 +671,7 @@
   
   .site-footer-top {
     background-color: var(--custom-btn-bg-color);
-    background-image: url('../images/nainoa-shizuru-NcdG9mK3PBY-unsplash.jpg');
+    /* background-image: url('assets/images/nainoa-shizuru-NcdG9mK3PBY-unsplash.jpg'); */
     background-repeat: no-repeat;
     margin-bottom: 70px;
     padding-top: 30px;
