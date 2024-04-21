@@ -1,0 +1,600 @@
+<div class="container mt-5">
+    <div class="row justify-content-lg-end">
+      <div class="col-md-4">
+        <img src="image/Back to home.svg" alt="">
+        <a href="Main.html"><button type="button" class="btn btn-outline-success" style="margin-top: -300px; margin-left: -100px; width: 200px;">Back to Home Page</button></a>
+
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+
+          <div class="card-header  text-white" style="background-color: #81c7a2;">
+            <h4 class="mb-0">Profile</h4>
+          </div>
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-4 text-center">
+                <!-- Profile Picture -->
+                <img src="image/profile-picture.jpg" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="width: 150px; height: 150px;">
+                <div>
+                  <button class="btn btn-primary btn-sm">Change Picture</button>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <!-- User Information -->
+                <ul class="list-group">
+                  <li class="list-group-item">
+                    <span class="fw-bold">Username:</span> JohnDoe
+                  </li>
+                  <li class="list-group-item">
+                    <span class="fw-bold">Email:</span> johndoe@example.com
+                  </li>
+                  <li class="list-group-item">
+                    <span class="fw-bold">Phone:</span> +1234567890
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <!-- Actions -->
+            <div class="text-end">
+              <button class="btn btn-primary me-2" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+              <button class="btn btn-danger me-2" data-bs-toggle="modal" data-bs-target="#deleteProfileModal">Delete Profile</button>
+              <a href="#" class="btn btn-secondary">Log Out</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Edit Profile Modal -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <!-- Edit Profile Form -->
+      <form id="editProfileForm">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username</label>
+          <input type="text" class="form-control" id="username" name="username" value="JohnDoe">
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" name="email" value="johndoe@example.com">
+        </div>
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone</label>
+          <input type="text" class="form-control" id="phone" name="phone" value="+1234567890">
+        </div>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea class="form-control" id="address" name="address" rows="3">123 Street, City, Country</textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="submit" form="editProfileForm" class="btn btn-primary">Save Changes</button>
+    </div>
+  </div>
+</div>
+</div>
+
+  
+<!-- Change Password Modal -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+      <!-- Change Password Form -->
+      <form id="changePasswordForm">
+        <div class="mb-3">
+          <label for="currentPassword" class="form-label">Current Password</label>
+          <input type="password" class="form-control" id="currentPassword" name="currentPassword" required>
+        </div>
+        <div class="mb-3">
+          <label for="newPassword" class="form-label">New Password</label>
+          <input type="password" class="form-control" id="newPassword" name="newPassword" required>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm New Password</label>
+          <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="submit" form="changePasswordForm" class="btn btn-primary">Save Changes</button>
+    </div>
+  </div>
+</div>
+</div>
+
+  
+  <!-- Delete Profile Modal -->
+  <div class="modal fade" id="deleteProfileModal" tabindex="-1" aria-labelledby="deleteProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteProfileModalLabel">Delete Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete your profile?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger">Yes, Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <section>
+    <div class="container">
+       <div class="row">
+        <div class="col">
+          <div class="card shadow" style="width: 300px;">
+              <img src="image/books/Shuggie.webp" class="card-img-top" alt="..." width="50px" height="300px">
+              <div class="card-body">
+                  <h5 class="card-title">Book Name: Shuggie Bain</h5>
+                  <p>Author: <span>Douglas Stuart</span></p>
+                  <p>Genre: <span>ncnijfhsifhih</span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                      <div>
+                          <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                          <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                          <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                              <i class="bi bi-trash"></i> 
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/WhiteNoise.webp" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : White Noise</h5>
+                  <p>Author : <Span>Don DeLillo</Span></p>
+                  <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/Afinebalance.jpg" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : A Fine Balance</h5>
+                  <p>Author : <Span>Rohinton Mistry</Span></p>
+                  <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/Catcher.jpg" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : The Catcher in the Rye</h5>
+                  <p>Author : <Span> J. D. Salinger</Span></p>
+                  <p>Genre : <Span>Fiction</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+       </div>
+<br><br>
+       <div class="row">
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/Shuggie.webp" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : Shuggie Bain</h5>
+                  <p>Author : <Span>Douglas Stuart</Span></p>
+                  <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/WhiteNoise.webp" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : White Noise</h5>
+                  <p>Author : <Span>Don DeLillo</Span></p>
+                  <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/Afinebalance.jpg" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : A Fine Balance</h5>
+                  <p>Author : <Span>Rohinton Mistry</Span></p>
+                  <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow" style="width: 300px;">
+                <img src="image/books/Catcher.jpg" class="card-img-top" alt="..." width="50px" height="300px">
+                <div class="card-body">
+                  <h5 class="card-title">Book Name : The Catcher in the Rye</h5>
+                  <p>Author : <Span> J. D. Salinger</Span></p>
+                  <p>Genre : <Span>Fiction</Span></p>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+                  <span class="badge rounded-pill text-bg-danger">Sell</span>
+                  <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
+                  <div class="d-flex  justify-content-between align-items-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 5px;">More Info</a>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-toggle="modal" data-bs-target="#editModal">Edit</a>
+                        <a href="#" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" style="margin-left: 10px;">
+                            <i class="bi bi-trash"></i> 
+                        </a>
+                    </div>
+                </div>
+                </div>
+              </div>
+        </div>
+       </div>
+
+    </div>
+    <br><br><br>
+</section>
+
+<!-- Show case Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                      <img src="image/books/Shuggie.webp" alt="" class="img-fluid">
+                  </div>
+                  <div class="col-md-6">
+                      <h4>Book Name :Shuggie Bain</h4>
+                      <p>Author : <Span>Douglas Stuart</Span></p>
+                    <p>Genre : <Span>ncnijfhsifhih</Span></p>
+                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
+
+                      <h4>Owner Name : Peter</h4>
+                      <i class="bi bi-envelope-fill"><p>jhon@gmail.com</p></i>
+                      <i class="bi bi-telephone-fill"><p>+371 22890325</p></i>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>
+</div>
+
+<div class="fixed-bottom d-flex justify-content-center mb-4">
+<a class="btn btn-primary" href="#" role="button"  data-bs-toggle="modal" data-bs-target="#advert">Click here to Advertise Newbook</a>
+
+</div>
+<!-- Advert Modal -->
+<div class="modal fade" id="advert" tabindex="-1" aria-labelledby="advertform" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="advertform">Upload Book Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form id="bookForm" class="needs-validation" novalidate>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="bookImage" class="form-label">Upload Book Image</label>
+          <input type="file" class="form-control" id="bookImage" accept="image/*" required>
+          <div class="invalid-feedback">Please upload a book image.</div>
+        </div>
+        <div class="col-md-8">
+          <div class="preview-container mb-3">
+            <img id="previewImage" src="#" alt="Uploaded Image" class="img-fluid rounded" style="display: none;">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" id="title" required>
+          <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="author" class="form-label">Author Name</label>
+          <input type="text" class="form-control" id="author" required>
+          <div class="invalid-feedback">Please provide the author's name.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="genre" class="form-label">Genre</label>
+          <input type="text" class="form-control" id="genre" required>
+          <div class="invalid-feedback">Please provide the genre.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="condition" class="form-label">Description</label>
+          <input type="text" class="form-control" id="condition" required>
+          <div class="invalid-feedback">Please provide the description.</div>
+        </div>
+        
+        <div class="col-md-6" >
+          <label class="form-label">Tags</label><br>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="sell" value="sell">
+            <label class="form-check-label" for="sell">Sell</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="exchange" value="exchange">
+            <label class="form-check-label" for="exchange">Exchange</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="free" value="free">
+            <label class="form-check-label" for="free">Free</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="free" value="free">
+            <label class="form-check-label" for="free">Buy</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-6 text-end">
+          <button type="button" class="btn btn-secondary" id="refreshBtn">Refresh</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+<!------------------Edit model-------------------->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalForm" aria-hidden="true">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+  <div class="modal-header">
+    <h5 class="modal-title" id="editModalForm">Edit Book Details</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  </div>
+  <div class="modal-body">
+    <form id="editBookForm" class="needs-validation" novalidate>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <label for="editBookImage" class="form-label">Update Book Image</label>
+          <input type="file" class="form-control" id="editBookImage" accept="image/*">
+        </div>
+        <div class="col-md-8">
+          <div class="preview-container mb-3">
+            <img id="editPreviewImage" src="#" alt="Uploaded Image" class="img-fluid rounded" style="display: none;">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="editTitle" class="form-label">Title</label>
+          <input type="text" class="form-control" id="editTitle" required>
+          <div class="invalid-feedback">Please provide a title.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="editAuthor" class="form-label">Author Name</label>
+          <input type="text" class="form-control" id="editAuthor" required>
+          <div class="invalid-feedback">Please provide the author's name.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="editGenre" class="form-label">Genre</label>
+          <input type="text" class="form-control" id="editGenre" required>
+          <div class="invalid-feedback">Please provide the genre.</div>
+        </div>
+        <div class="col-md-6">
+          <label for="editCondition" class="form-label">Description</label>
+          <input type="text" class="form-control" id="editCondition" required>
+          <div class="invalid-feedback">Please provide the description.</div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Tags</label><br>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="editSell" value="sell">
+            <label class="form-check-label" for="editSell">Sell</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="editExchange" value="exchange">
+            <label class="form-check-label" for="editExchange">Exchange</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="editFree" value="free">
+            <label class="form-check-label" for="editFree">Free</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="editBuy" value="buy">
+            <label class="form-check-label" for="editBuy">Buy</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        <div class="col-6 text-end">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Confirm Delete</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          Are you sure you want to delete this book?
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+      </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-..." crossorigin="anonymous"></script>
+
+
+<script>
+    // JavaScript to handle form submission and refresh
+    const bookForm = document.getElementById('bookForm');
+    const refreshBtn = document.getElementById('refreshBtn');
+  
+  
+  
+    
+    // Reset form fields to their initial state
+    function resetForm() {
+      bookForm.reset();
+      // Clear image preview
+      const previewImage = document.getElementById('previewImage');
+      previewImage.src = '';
+      previewImage.style.display = 'none';
+    }
+  
+    // Event listener for form submission
+    bookForm.addEventListener('submit', function(event) {
+      if (!bookForm.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      bookForm.classList.add('was-validated');
+    });
+  
+    // Event listener for refresh button
+    refreshBtn.addEventListener('click', function() {
+      resetForm();
+    });
+  
+    // JavaScript to handle image preview
+    const bookImageInput = document.getElementById('bookImage');
+    const previewImage = document.getElementById('previewImage');
+  
+    bookImageInput.addEventListener('change', function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.addEventListener('load', function() {
+          previewImage.src = reader.result;
+          previewImage.style.display = 'block';
+        });
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+  
+
+
+
+
