@@ -7,4 +7,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
+.nav-link {
+  cursor: pointer; /* Changes the cursor to a hand when hovering */
+  text-decoration: none; /* Optionally remove underline for aesthetics */
+}
 
+.nav-item {
+  color: #000000
+}

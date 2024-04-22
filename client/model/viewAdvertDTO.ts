@@ -9,7 +9,6 @@
  * https://openapi-generator.tech
  * Do not edit the class manually.
  */
-import { PersonsDetailsDTO } from './personsDetailsDTO';
 
 
 export interface ViewAdvertDTO { 
@@ -18,10 +17,11 @@ export interface ViewAdvertDTO {
     title?: string;
     author?: string;
     genre?: string;
-    condition?: string;
-    price?: number;
+    description?: string;
     advertImage?: Array<string>;
-    personsDetailsDTO?: PersonsDetailsDTO;
+    username?: string;
+    phoneNumber?: string;
+    email?: string;
 }
 export namespace ViewAdvertDTO {
     export type TagEnum = 'BUY' | 'SELL' | 'EXCHANGE' | 'FOR_FREE';
