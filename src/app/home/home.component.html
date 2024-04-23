@@ -7,17 +7,18 @@
                 <div class="col-lg-12 col-12 d-flex flex-wrap">
                     <p class="d-flex me-4 mb-0">
                         
-                        <strong class="text-dark">Welcome to BookCrosser. Platform to connect the readers</strong>
+                        <strong class="text-dark">Welcome to BookCrosser. Platform to connect readers</strong>
                     </p>
+                    
                 </div>
 
             </div>
         </div>
     </div>
 
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="color:black">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" style="color:black">
                <img src="assets/image/Bookcrosser_logo.png" alt="Logo" width="70px"> BookCrosser
             </a>
 
@@ -30,39 +31,58 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav align-items-lg-center ms-auto me-lg-5">
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_1">Home </a>
+                        <a class="nav-link" (click)="toHome()">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_2">About Us</a>
+                        <a class="nav-link click-scroll">About Us</a>
                     </li>
-
+<!-- 
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Selected by Tags
                         </a>
+
                         <ul class="dropdown-menu">
                           <li><a class="dropdown-item" href="#">Sell</a></li>
                           <li><a class="dropdown-item" href="#">Exchange</a></li>
                           <li><hr class="dropdown-divider"></li>
                           <li><a class="dropdown-item" href="#">Free</a></li>
-                        </ul></li>
+                        </ul>
 
+                    
+                    </li> -->
+
+                    <li class="nav-item" ngbDropdown display="dynamic" placement="bottom-end">
+                        <a class="nav-link dropdown-toggle" tabindex="0" ngbDropdownToggle id="navbarDropdown3" role="button"> Selected by Tag </a>
+                        <div ngbDropdownMenu aria-labelledby="navbarDropdown3" class="dropdown-menu">
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'BUY' })">Buy</a>
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'SELL' })">Sell</a>
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'EXCHANGE' })">Exchange</a>
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'FOR_FREE' })">For free</a>
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: undefined })">All</a>
+                        </div>
+                    </li>
+                        
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_3">Categories</a>
+                        <a class="nav-link click-scroll">Categories</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_4">FAQs</a>
+                        <a class="nav-link click-scroll">FAQs</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link click-scroll" href="#section_6">Contact</a>
+                        <a class="nav-link click-scroll">Contact</a>
                     </li>
                 </ul>
 
-                <a href="Profile.html" class="btn custom-btn d-lg-block d-none">My Profile</a>
-            </div>
+                <a class="btn custom-btn d-lg-block d-none" (click)="toProfile()">
+                    <i class="fas fa-user me-2"></i> 
+                    My Profile
+                  </a>            
+                </div>
         </div>
     </nav>
 
@@ -73,31 +93,64 @@
         <div class="container d-flex">
             <div class="row">
             <div class="col">
-                <div class="container-fluid" style="margin-top: 200px;">
-                    <form class="d-flex" role="search">
-                      <input class="form-control me-2" type="search" placeholder="Search by author" aria-label="Search">
+              <div class="container-fluid" style="margin-top: 200px;">
+                <form
+                  class="d-flex"
+                  role="search"
+                  (submit)="updateFilters({ author: authorSearch }); $event.preventDefault()"
+                >
+                  <input
+                    [(ngModel)]="authorSearch"
+                    name="authorSearch"
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search by author"
+                    aria-label="Search"
+                  />
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+           </div>
+
+                <div class="col">
+                  <div class="container-fluid" style="margin-top: 200px;">
+                    <form
+                      class="d-flex"
+                      role="search"
+                      (submit)="updateFilters({ title: titleSearch }); $event.preventDefault()"
+                    >
+                      <input
+                        [(ngModel)]="titleSearch"
+                        name="titleSearch"
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search by title"
+                        aria-label="Search"
+                      />
                       <button class="btn btn-outline-success" type="submit">Search</button>
                     </form>
                   </div>
-                </div>
+                    </div>
 
-                <div class="col">
-                    <div class="container-fluid" style="margin-top: 200px;">
-                        <form class="d-flex" role="search">
-                          <input class="form-control me-2" type="search" placeholder="Search by title" aria-label="Search">
+                    <div class="col">
+                      <div class="container-fluid" style="margin-top: 200px;">
+                        <form
+                          class="d-flex"
+                          role="search"
+                          (submit)="updateFilters({ genre: genreSearch }); $event.preventDefault()"
+                        >
+                          <input
+                            [(ngModel)]="genreSearch"
+                            name="genreSearch"
+                            class="form-control me-2"
+                            type="search"
+                            placeholder="Search by genre"
+                            aria-label="Search"
+                          />
                           <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                       </div>
                     </div>
-
-                    <div class="col">
-                        <div class="container-fluid" style="margin-top: 200px;">
-                            <form class="d-flex" role="search">
-                              <input class="form-control me-2" type="search" placeholder="Search by genre" aria-label="Search">
-                              <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
-                          </div>
-                        </div>
                 <div class="col-lg-12 col-12 mt-auto d-flex flex-column flex-lg-row text-center" >
                  
 
@@ -106,34 +159,34 @@
                             <span class="text-white me-3"> </span>
 
                             <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-facebook"></span>
+                                <a class="social-icon-link">
+                                  <i class="fab fa-facebook-f"></i> <!-- Font Awesome Facebook icon -->
                                 </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-twitter"></span>
+                              </li>
+                          
+                              <li class="social-icon-item">
+                                <a class="social-icon-link">
+                                  <i class="fab fa-twitter"></i> <!-- Font Awesome Twitter icon -->
                                 </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-browser-chrome"></span>
+                              </li>
+                          
+                              <li class="social-icon-item">
+                                <a class="social-icon-link">
+                                  <i class="fab fa-google"></i> <!-- Font Awesome Google/Chrome icon -->
                                 </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-linkedin"></span>
+                              </li>
+                          
+                              <li class="social-icon-item">
+                                <a class="social-icon-link">
+                                  <i class="fab fa-linkedin-in"></i> <!-- Font Awesome LinkedIn icon -->
                                 </a>
-                            </li>
-
-                            <li class="social-icon-item">
-                                <a href="#" class="social-icon-link">
-                                    <span class="bi-instagram"></span>
+                              </li>
+                          
+                              <li class="social-icon-item">
+                                <a class="social-icon-link">
+                                  <i class="fab fa-instagram"></i> <!-- Font Awesome Instagram icon -->
                                 </a>
-                            </li>
+                              </li>
                         </ul>
                     </div>
                 </div>
@@ -142,200 +195,138 @@
 
         <div class="video-wrap">
             <video autoplay="" loop="" muted="" class="custom-video" poster="">
-                <source src="video/pexels-2022395.mp4" type="video/mp4">
-
+                <source src="../../assets/image/pexels-2022395.mp4" type="video/mp4">
             </video>
         </div>
     </section>
         
     <br><br><br>
 
+
     <section>
-        <div class="container">
-           <div class="row">
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="assets/image/books/Shuggie.webp" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : Shuggie Bain</h5>
-                      <p>Author : <Span>Douglas Stuart</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
 
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="assets/image/books/WhiteNoise.webp" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : White Noise</h5>
-                      <p>Author : <Span>Don DeLillo</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
+    <!-- <app-book/>             -->
 
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="assets/image/books/Afinebalance.jpg" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : A Fine Balance</h5>
-                      <p>Author : <Span>Rohinton Mistry</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
+    <div *ngIf="loading(); else loadedContent">
+      Loading...
+    </div>
+    
+    <ng-template #loadedContent>
+      <div class="container">
+        <div class="row g-2 gx-0">
+          <!-- Loop through adverts and create a card for each one -->
+          <div *ngFor="let advert of adverts$()" class="col-6 col-md-3">
+            <div class="card shadow" style="width: 300px;">
+              <img 
+                [src]="advert.advertImage ? advert.advertImage : '../../assets/image/book.jpg'" 
+                class="card-img-top" 
+                alt="Advert Image" 
+                width="50px"
+                height="300px" 
+              />
+              <div class="card-body" >
+                <h5 class="card-title">Title: {{ advert.title }}</h5>
+                <p>Author: <span>{{ advert.author }}</span></p>
+                <p>Genre: <span>{{ advert.genre }}</span></p>
+                <p class="card-text">{{ advert.description }}</p>
+                <span 
+                  class="badge rounded-pill"
+                  [ngClass]="{
+                    'text-bg-danger': advert.tag === 'SELL',
+                    'text-bg-success': advert.tag === 'EXCHANGE',
+                    'text-bg-primary': advert.tag === 'BUY',
+                    'text-bg-warning': advert.tag === 'FOR_FREE'
+                  }"
+                >
+                  {{ advert.tag }}
+                </span>
+                <a class="btn btn-outline-primary" (click)="openModalWithAdvert(content, advert.id)">
+                  More Info
+                </a>
+              </div>
             </div>
-
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="image/books/Catcher.jpg" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : The Catcher in the Rye</h5>
-                      <p>Author : <Span> J. D. Salinger</Span></p>
-                      <p>Genre : <Span>Fiction</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
-           </div>
-<br><br>
-           <div class="row">
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="image/books/Shuggie.webp" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : Shuggie Bain</h5>
-                      <p>Author : <Span>Douglas Stuart</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="image/books/WhiteNoise.webp" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : White Noise</h5>
-                      <p>Author : <Span>Don DeLillo</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="image/books/Afinebalance.jpg" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : A Fine Balance</h5>
-                      <p>Author : <Span>Rohinton Mistry</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
-
-            <div class="col">
-                <div class="card shadow" style="width: 300px;">
-                    <img src="assets/image/books/Catcher.jpg" class="card-img-top" alt="..." width="50px" height="300px">
-                    <div class="card-body">
-                      <h5 class="card-title">Book Name : The Catcher in the Rye</h5>
-                      <p>Author : <Span> J. D. Salinger</Span></p>
-                      <p>Genre : <Span>Fiction</Span></p>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-                      <span class="badge rounded-pill text-bg-danger">Sell</span>
-                      <span class="badge rounded-pill text-bg-success">Exchange</span> <br> <br>
-                      <a href="#" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        More Info
-                      </a>
-                    </div>
-                  </div>
-            </div>
-           </div>
-
+          </div>
         </div>
+      </div>
+    </ng-template>
+      
     </section>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="assets/image/books/Shuggie.webp" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-md-6">
-                        <h4>Book Name :Shuggie Bain</h4>
-                        <p>Author : <Span>Douglas Stuart</Span></p>
-                      <p>Genre : <Span>ncnijfhsifhih</Span></p>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> 
-
-                        <h4>Owner Name : Peter</h4>
-                        <i class="bi bi-envelope-fill"><p>jhongmail.com</p></i>
-                        <i class="bi bi-telephone-fill"><p>+371 22890325</p></i>
-                    </div>
-                </div>
+    <!-- <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">More Info</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <img src='../../assets/image/book.jpg' alt='' class="img-fluid">
             </div>
+            <div class="col-md-6">
+              <h4>Book Title: Shuggie Bain</h4>
+              <p>Author: Douglas Stuart</p>
+              <p>Genre: ncnijfhsifhih</p>
+              <p class="card-text">Some example text for the modal.</p>
+              <h4>Owner Name: Peter</h4>
+              <p>Email: jhonmail.com</p>
+              <p>Phone: +371 22890325</p>
+            </div>
+          </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </ng-template> -->
+
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">More Info</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Show error or loading message if `selectedAdvert` is null -->
+        <div *ngIf="!selectedAdvert$()">
+          <p>{{ error$() || 'Loading...' }}</p>
         </div>
-    </div>
-</div>
-</div>
+    
+        <!-- Only render advert details when `selectedAdvert` is defined -->
+        <div *ngIf="selectedAdvert$()">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <img
+                  src='../../assets/image/book.jpg'
+                  class="img-fluid"
+                  alt="Advert Image"
+                />
+              </div>
+              <div class="col-md-6">
+                <h4>Book Title: {{ selectedAdvert$()?.title || 'Unknown title' }}</h4>
+                <p>Author: {{ selectedAdvert$()?.author || 'Unknown author' }}</p>
+                <p>Genre: {{ selectedAdvert$()?.genre || 'Unknown genre' }}</p>
+                <p class="card-text">{{ selectedAdvert$()?.description || 'Unknown description' }}</p>
+                <h4>Owner Name: {{ selectedAdvert$()?.username || 'Unkwnown username' }}</h4>
+                <p>Email: {{ selectedAdvert$()?.email || 'Unknown email' }}</p>
+                <p>Phone: {{ selectedAdvert$()?.phoneNumber || 'Unknown phoneNumber' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </ng-template>
+    
+
 <br><br>
 <nav aria-label="Page navigation example">
 <ul class="pagination justify-content-center">
-  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-  <li class="page-item"><a class="page-link" href="#">1</a></li>
-  <li class="page-item"><a class="page-link" href="#">2</a></li>
-  <li class="page-item"><a class="page-link" href="#">3</a></li>
-  <li class="page-item"><a class="page-link" href="#">Next</a></li>
+  <li class="page-item"><a class="page-link" (click)="$event.preventDefault(); updateFilters({ pageNum: 1 })">1</a></li>
+  <li class="page-item"><a class="page-link" (click)="$event.preventDefault(); updateFilters({ pageNum: 2 })">2</a></li>
+  <li class="page-item"><a class="page-link" (click)="$event.preventDefault(); updateFilters({ pageNum: 3 })">3</a></li>
 </ul>
 </nav>
 
@@ -344,109 +335,10 @@
 <br><br>
 
 <footer class="site-footer">
-<div class="site-footer-top">
-    <div class="container">
-        <div class="row">
-
-            <div class="col-lg-6 col-12">
-                <h2 class="text-white mb-lg-0">Festava Live</h2>
-            </div>
-
-            <div class="col-lg-6 col-12 d-flex justify-content-lg-end align-items-center">
-                <ul class="social-icon d-flex justify-content-lg-end">
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link">
-                            <span class="bi-twitter"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link">
-                            <span class="bi-apple"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link">
-                            <span class="bi-instagram"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link">
-                            <span class="bi-youtube"></span>
-                        </a>
-                    </li>
-
-                    <li class="social-icon-item">
-                        <a href="#" class="social-icon-link">
-                            <span class="bi-pinterest"></span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- <div class="site-footer-top">
+        <div class="container">
         </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-
-        <div class="col-lg-6 col-12 mb-4 pb-2">
-            <h5 class="site-footer-title mb-3">Links</h5>
-
-            <ul class="site-footer-links">
-                <li class="site-footer-link-item">
-                    <a href="#" class="site-footer-link">Home</a>
-                </li>
-
-                <li class="site-footer-link-item">
-                    <a href="#" class="site-footer-link">About Us</a>
-                </li>
-
-                <li class="site-footer-link-item">
-                    <a href="#" class="site-footer-link">Categories</a>
-                </li>
-
-                <li class="site-footer-link-item">
-                    <a href="#" class="site-footer-link">FAQs</a>
-                </li>
-
-                <li class="site-footer-link-item">
-                    <a href="#" class="site-footer-link">Contact</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-12 mb-4 mb-lg-0">
-            <h5 class="site-footer-title mb-3">Have a question?</h5>
-
-            <p class="text-white d-flex mb-1">
-                <a href="tel: 090-080-0760" class="site-footer-link">
-                    +371 22903487
-                </a>
-            </p>
-        </div>
-
-        <div class="col-lg-3 col-md-6 col-11 mb-4 mb-lg-0 mb-md-0">
-            <h5 class="site-footer-title mb-3">Location</h5>
-
-            <p class="text-white d-flex mt-3 mb-2">
-                Market iela 78, Riga, Latvia</p>
-
-            <a class="link-fx-1 color-contrast-higher mt-3" href="#">
-                <span>Our Maps</span>
-                <svg class="icon" viewBox="0 0 32 32" aria-hidden="true">
-                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="16" cy="16" r="15.5"></circle>
-                        <line x1="10" y1="18" x2="16" y2="12"></line>
-                        <line x1="16" y1="12" x2="22" y2="18"></line>
-                    </g>
-                </svg>
-            </a>
-        </div>
-    </div>
-</div>
+    </div> -->
 
 <div class="site-footer-bottom">
     <div class="container">
@@ -459,15 +351,15 @@
             <div class="col-lg-8 col-12 mt-lg-5">
                 <ul class="site-footer-links">
                     <li class="site-footer-link-item">
-                        <a href="#" class="site-footer-link">Terms &amp; Conditions</a>
+                        <p class="site-footer-link">Terms &amp; Conditions</p>
                     </li>
 
                     <li class="site-footer-link-item">
-                        <a href="#" class="site-footer-link">Privacy Policy</a>
+                        <p class="site-footer-link">Privacy Policy</p>
                     </li>
 
                     <li class="site-footer-link-item">
-                        <a href="#" class="site-footer-link">Your Feedback</a>
+                        <p href="#" class="site-footer-link">Your Feedback</p>
                     </li>
                 </ul>
             </div>

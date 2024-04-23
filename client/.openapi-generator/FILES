@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 README.md
 api.module.ts
 api/advertController.service.ts
@@ -9,8 +8,9 @@ configuration.ts
 encoder.ts
 git_push.sh
 index.ts
+model/advertDTO.ts
+model/filtersDTO.ts
 model/models.ts
-model/personsDetailsDTO.ts
 model/signUpDTO.ts
 model/viewAdvertDTO.ts
 param.ts

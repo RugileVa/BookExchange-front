@@ -35,6 +35,7 @@
     --font-weight-bold:             700;
   }
   
+  
   body {
     background-color: var(--white-color);
     font-family: var(--body-font-family); 
@@ -431,7 +432,7 @@
   
   .navbar-nav .nav-link {
     display: inline-block;
-    color: var(--white-color);
+    color: var(--dark-color);
     font-size: var(--p-font-size);
     font-weight: var(--font-weight-normal);
     position: relative;
