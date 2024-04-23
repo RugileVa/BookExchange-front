@@ -19,6 +19,8 @@ export class LoginComponent {
     password: ""
   }
 
+  errorMessage: string | null = null;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   async onSubmit() {
@@ -27,6 +29,11 @@ export class LoginComponent {
       this.router.navigate(["/home"]);
     } catch (error) {
       console.log(error);
+      this.errorMessage = 'Username or password not found';
+      // Automatically clear the error message after 5 seconds
+      setTimeout(() => {
+        this.errorMessage = null;
+      }, 5000);
     }
   }
 

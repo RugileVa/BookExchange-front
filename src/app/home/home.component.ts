@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AdvertDTO, FiltersDTO } from '../../../client';
+import { AdvertDTO, FiltersDTO, ViewAdvertDTO } from '../../../client';
 import { AdvertControllerService } from '../../../client'
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, map, of } from 'rxjs';
@@ -22,11 +22,12 @@ import { catchError, map, of } from 'rxjs';
 export class HomeComponent {
 
   private modalService = inject(NgbModal);
+  public selectedAdvert$ = signal<ViewAdvertDTO | null>(null);
   
   authorSearch = ''; 
   titleSearch = ''; 
   genreSearch = ''; 
-  
+
   public adverts$: Signal<AdvertDTO[] | null>;
   public error$: Signal<string | null>;
   public isLoading$: Signal<boolean> = signal(true); // Signal to track loading status
@@ -56,7 +57,12 @@ export class HomeComponent {
   async toHome() {
     console.log('Navigating to Home');
     this.router.navigate(["/home"]);
-}
+   }
+
+  async toProfile() {
+    console.log('Navigating to profile');
+    this.router.navigate(["/profile"]);
+  }
 
   updateFilters(updatedFilters: Partial<FiltersDTO>) {
     // Merge updated filters into existing filters
@@ -90,11 +96,33 @@ export class HomeComponent {
       });
   }
 
-  openVerticallyCentered(content: TemplateRef<any>) {
-    this.modalService.open(content, { centered: true });
+  openModalWithAdvert(content: TemplateRef<any>, advertId: number | undefined) {
+    if (!advertId) {
+      this.error$ = signal('Invalid advert ID');
+      return;
+    }
+
+    // Reset the selected advert and error message
+    this.selectedAdvert$ = signal(null);
+    this.error$ = signal(null);
+
+    // Fetch advert details by ID
+    this.advertService.seeAdvertDetails(advertId)
+      .pipe(
+        catchError((error) => {
+          console.error('Error fetching advert:', error);
+          this.error$ = signal('Failed to fetch advert details.');
+          return of(null); // Return null in case of error
+        })
+      )
+      .subscribe((advert) => {
+        if (advert) {
+          this.selectedAdvert$ = signal(advert); // Update the selected advert
+          this.modalService.open(content, { centered: true }); // Open modal
+        } else {
+          this.error$ = signal('Advert not found.');
+        }
+      });
   }
 
 }
-
-
-    

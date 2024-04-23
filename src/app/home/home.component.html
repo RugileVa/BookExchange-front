@@ -61,6 +61,7 @@
                             <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'SELL' })">Sell</a>
                             <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'EXCHANGE' })">Exchange</a>
                             <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: 'FOR_FREE' })">For free</a>
+                            <a ngbDropdownItem (click)="$event.preventDefault(); updateFilters({ tag: undefined })">All</a>
                         </div>
                     </li>
                         
@@ -77,7 +78,7 @@
                     </li>
                 </ul>
 
-                <a href="Profile.html" class="btn custom-btn d-lg-block d-none">
+                <a class="btn custom-btn d-lg-block d-none" (click)="toProfile()">
                     <i class="fas fa-user me-2"></i> 
                     My Profile
                   </a>            
@@ -239,7 +240,7 @@
                 >
                   {{ advert.tag }}
                 </span>
-                <a class="btn btn-outline-primary" (click)="openVerticallyCentered(content)">
+                <a class="btn btn-outline-primary" (click)="openModalWithAdvert(content, advert.id)">
                   More Info
                 </a>
               </div>
@@ -251,8 +252,7 @@
       
     </section>
 
-
-    <ng-template #content let-modal>
+    <!-- <ng-template #content let-modal>
       <div class="modal-header">
         <h4 class="modal-title">More Info</h4>
         <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
@@ -278,8 +278,47 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
       </div>
-    </ng-template>
+    </ng-template> -->
 
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">More Info</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Show error or loading message if `selectedAdvert` is null -->
+        <div *ngIf="!selectedAdvert$()">
+          <p>{{ error$() || 'Loading...' }}</p>
+        </div>
+    
+        <!-- Only render advert details when `selectedAdvert` is defined -->
+        <div *ngIf="selectedAdvert$()">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-4">
+                <img
+                  src='../../assets/image/book.jpg'
+                  class="img-fluid"
+                  alt="Advert Image"
+                />
+              </div>
+              <div class="col-md-6">
+                <h4>Book Title: {{ selectedAdvert$()?.title || 'Unknown title' }}</h4>
+                <p>Author: {{ selectedAdvert$()?.author || 'Unknown author' }}</p>
+                <p>Genre: {{ selectedAdvert$()?.genre || 'Unknown genre' }}</p>
+                <p class="card-text">{{ selectedAdvert$()?.description || 'Unknown description' }}</p>
+                <h4>Owner Name: {{ selectedAdvert$()?.username || 'Unkwnown username' }}</h4>
+                <p>Email: {{ selectedAdvert$()?.email || 'Unknown email' }}</p>
+                <p>Phone: {{ selectedAdvert$()?.phoneNumber || 'Unknown phoneNumber' }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">Close</button>
+      </div>
+    </ng-template>
     
 
 <br><br>
